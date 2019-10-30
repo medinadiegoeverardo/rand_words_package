@@ -37,3 +37,27 @@ def select_make_sentence(number_of_words, first_word_number=0, last_word_number=
     for sent in byte_sentence:
         sentence.append(sent.decode('ASCII'))
     return " ".join(sentence)
+
+
+"""
+
+This function can be used with or without primary function.
+first input should be an array of words. second input is how many rows you want 
+in the dataframe.
+
+input will be turned into a dataframe like so:
+example: function(words, 10)
+
+Note: calculate number of words before inputting to get dataframe shape you desire
+
+words = len(words_input)
+>> 60
+rows = 10
+
+words / rows will yield 6 columns
+
+"""
+
+def make_dataframe_pick_num_rows(words, rows):
+  data_for_df = np.array_split(words.split(" "), rows)
+  return pd.DataFrame(data=data_for_df)
